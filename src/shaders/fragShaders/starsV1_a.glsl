@@ -32,7 +32,7 @@ void main() {
     // Scale
     st *= uScale;
 
-
+    st += uTime / 10.;
 
     // Tile the space
     vec2 i_st = floor(st);
@@ -58,8 +58,8 @@ void main() {
             // Random position from current + neighbor place in the grid
             vec2 point = random2(i_st + neighbor);
 
-            float timer = uTime / 30.;
-            point = 0.5 + 0.5*sin(timer+ 5.2831*point);
+            // float timer = uTime / 50.;
+            // point = 0.5 + 0.5*sin(timer+ 5.2831*point);
 
 
             // point = i_st + neighbor;

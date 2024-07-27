@@ -18,13 +18,13 @@ vec2 random2( vec2 p ) {
 }
 
 void main() {
-    float uScale = 200.0;
+    float uScale = 30.0;
     vec2 st = gl_FragCoord.xy/uResolution.xy;
     st.x *= uResolution.x/uResolution.y;
     vec3 color = vec3(.0);
 
-    vec3 color1 = vec3(0.2588, 0.1451, 0.7686);
-    vec3 color2 = vec3(0.0431, 0.0275, 0.1804);
+    vec3 color1 = vec3(0.3176, 0.1765, 0.9569);
+    vec3 color2 = vec3(0.0667, 0.0431, 0.3255);
 
     vec3 background = mix(color2, color1, v_uv.y);
 
@@ -56,16 +56,13 @@ void main() {
             // Random position from current + neighbor place in the grid
             vec2 point = random2(i_st + neighbor);
 
-            float timer = uTime / 6.2;
+            float timer = uTime / 30.;
             point = 0.5 + 0.5*sin(timer+ 5.2831*point);
-
-
-            // point = i_st + neighbor;
-            // vec2 point = neighbor + i_st;
 
 			// Vector between the pixel and the point
             vec2 diff = neighbor + point - st;
-            diff += 1.9;
+
+            // diff += 1.9;
 
             // Minkowski distance. Gives the star effect
             float dist = pow(sqrt(pow(abs(diff.x), expoent) + pow(abs(diff.y), expoent)), 1./ expoent);
